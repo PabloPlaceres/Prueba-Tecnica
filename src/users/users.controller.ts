@@ -27,4 +27,10 @@ export class UsersController {
   login(@Body() loginUserDto: LoginUserDto) {
     return this.usersService.login(loginUserDto);
   }
+
+  @Post('seed')
+  @ApiResponse({ status: 200, description: 'Login successful' })
+  seedUsers(){
+    return this.usersService.seedUsers()
+  }
 }

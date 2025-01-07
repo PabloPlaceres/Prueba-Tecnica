@@ -68,4 +68,13 @@ export class UsersService {
     this.logger.error(error);
     throw new InternalServerErrorException(`Error creating the user: ${error.message}`);
   }
+
+  async seedUsers(){
+    const user = this.usersRepository.create({name: "pepito",
+    email: "asbassd@gail.com",
+    password: bcrypt.hashSync('admin', 10),
+  role: 'admin'})
+
+  return user
+  }
 }
