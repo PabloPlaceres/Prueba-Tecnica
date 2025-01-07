@@ -70,11 +70,13 @@ export class UsersService {
   }
 
   async seedUsers(){
-    const user = this.usersRepository.create({name: "pepito",
+    const user = this.usersRepository.create({name: "Admin",
     email: "asbassd@gail.com",
     password: bcrypt.hashSync('admin', 10),
   role: 'admin'})
 
-  return user
+  return {...user, 
+    token: this.getJwtToken({id: user.id, rol: user.role})
+};
   }
 }
